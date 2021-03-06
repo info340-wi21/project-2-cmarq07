@@ -1,38 +1,223 @@
-.App {
+/* General */
+body {
+  font-family: "Rubik", "Helvetica Neue", "Helvetica", sans-serif;
+  margin: 0;
+  font-size: 16px;
+  background-color: #e6e6e6;
+}
+
+img {
+  border-radius: inherit;
+}
+
+/* Menus */
+.menu.topbar,
+.menu.lowbar {
+  display: flex;
+  position: relative;
+  background-color: #b80c09;
+}
+
+.menu.topbar {
+  box-shadow: 0 1px 10px black;
+  padding: 5px;
+  width: auto;
+  z-index: 2;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.menu.lowbar {
+  /*background-color:#7a0806;*/
+  background-color: #333333;
+  box-shadow: 0 0 20px rgb(83, 83, 83);
+  padding: 5px 5px 5px 0;
+  z-index: 1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header .menu.topbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.navbar-links {
+  display: none;
+}
+
+header .menu.lowbar {
+  position: fixed;
+  width: 100%;
+  top: 55px;
+}
+
+.menu.topbar h1 {
+  font-size: 2em;
+  font-weight: 900;
+  color: #f8c7cc;
+}
+
+.menu.topbar h1:hover {
   color: white;
+  text-decoration: none;
 }
 
-.App-link {
-  color: #61dafb;
+/* Links */
+.gameCard a {
+  color: black;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.menu.topbar a {
+  text-decoration: none;
+}
+
+.menu.lowbar a {
+  font-size: 1.5em;
+  font-weight: 600;
+  padding: 8px;
+  color: white;
+  background-color: #333333;
+}
+
+.gameCard a:active {
+  text-decoration: none;
+}
+
+/* Menu (cont.) */
+.menu.lowbar a:hover {
+  background-color: #aa0b08;
+  text-decoration: none;
+}
+
+/* Body Content */
+main {
+  font-size: 1em;
+  padding: 110px 20px 20px 20px;
+}
+
+section {
+  background-color: white;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px black;
+  margin-bottom: 25px;
+}
+
+.search-container {
+  margin-bottom: 1rem;
+}
+
+.whole-page .search-container {
+  text-align: center;
+}
+
+.search-container label {
+  display: block;
+  font-weight: 600;
+}
+
+.search-container input {
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  outline: none;
+  box-shadow: 0 5px 10px black;
+  width: 30vw;
+}
+
+.search-container button {
+  border: none;
+  background: none;
+  font-size: 1.5em;
+  outline: none;
+}
+
+.search-container button:hover {
+  color: #cc0000;
+  cursor: pointer;
+}
+
+.search-container button:active {
+  color: red;
+}
+
+.game-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.gameCard {
+  background-color: #f2f2f2;
+  margin: 0 auto;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px black;
+  margin-bottom: 25px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.gameCard h2 {
+  font-weight: 600;
+}
+
+.gameCard:hover {
+  background-color: white;
+  cursor: pointer;
+}
+
+.gameCard:active {
+  background-color: #b80c09;
+}
+
+.gameCard img {
+  width: 20em;
+  height: 20em;
+}
+
+.image {
+  background-color: white;
+  border-radius: 50px;
+  padding: 10px;
+  box-shadow: 0 5px 10px black;
+}
+
+.image img {
+  display: block;
+  width: 75vw;
+  height: 75vw;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Media Queries */
+
+/* XS, S, M, L Screen Sizes */
+@media (min-width: 768px) {
+  .menu.topbar h1 {
+    letter-spacing: 2px;
   }
-  to {
-    transform: rotate(360deg);
+  main {
+    padding: 125px 40px 40px 40px;
+  }
+  .menu.lowbar {
+    display: flex;
+  }
+  .hamburger-menu {
+    display: none;
+  }
+  .navbar-links {
+    display: flex;
+  }
+}
+
+/* L Screen Size */
+@media (min-width: 1200px) {
+  .game-container {
+    padding: 10px;
+  }
+  .gameCard {
+    margin: 10px;
   }
 }
