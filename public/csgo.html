@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Brandon Ta and Christian Calloway">
+  <meta name="description" content="Proposal page for Project 1 for INFO 340">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>csgo</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="menu topbar">
+      <a href="index.html">
+        <h1>Video Game Reviews</h1>
+      </a>
+    </div>
+    <div class="menu lowbar navbar">
+      <nav>
+        <div class="hamburger-menu">
+          <a href="#"><i class="fa fa-bars" aria-label="menu"></i></a>
+        </div>
+        <div class="navbar-links">
+          <a href="index.html">Games</a>
+          <a href="https://store.steampowered.com/" target="_blank">Steam</a>
+          <a href="https://github.com/mulhod/steam_reviews" target="_blank">Source</a>
+          <!-- <a href="">Ratings</a>
+          <a href="">Profile</a>
+          <a href="">Ipsum</a> -->
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Counter-Strike Global Offensive</h2>
+      <p>
+        Counter-Strike: Global Offensive (CS: GO) expands upon the team-based action gameplay
+        that it pioneered when it was launched 19 years ago.
+
+        CS: GO features new maps, characters, weapons, and game modes, and delivers updated
+        versions of the classic CS content (de_dust2, etc.).
+
+        "Counter-Strike took the gaming industry by surprise when the unlikely MOD became
+        the most played online PC action game in the world almost immediately after its release
+        in August 1999," said Doug Lombardi at Valve. "For the past 12 years, it has continued to
+        be one of the most-played games in the world, headline competitive gaming tournaments and
+        selling over 25 million units worldwide across the franchise. CS: GO promises to expand
+        on CS' award-winning gameplay and deliver it to gamers on the PC as well as the next
+        gen consoles and the Mac."
+      </p>
+    </section>
+    <div class="btn-group btn-group-toggle d-flex justify-content-center m-3"
+      data-toggle="buttons">
+      <button id="show-reviews" type="button" class="btn btn-dark btn-lg" data-toggle="button"
+        aria-pressed="false" autocomplete="off">
+        Reviews
+      </button>
+      <button id="show-graph" type="button" class="btn btn-dark btn-lg" data-toggle="button"
+        aria-pressed="false" autocomplete="off">
+        Graph
+      </button>
+    </div>
+    <div class="image m-3">
+    </div>
+    <div id="reviews-section">
+    </div>
+    <section>
+      <h2>Submit a Review</h2>
+      <form>
+        <div class="form-group">
+          <label for="review-username">Username: </label>
+          <input class="form-control" name="username" id="review-username" type="text"
+            required />
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="review-recommendation"
+            id="review-recommended" value="Recommended" checked>
+          <label class="form-check-label mr-5" for="review-recommended">
+            Recommended
+          </label>
+          <input class="form-check-input" type="radio" name="review-recommendation"
+            id="review-not-recommended" value="Not Recommended">
+          <label class="form-check-label" for="review-not-recommended">
+            Not Recommended
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="review_text">Review: </label>
+          <textarea class="form-control" name="review" id="review_text" rows="5"
+            required></textarea>
+        </div>
+        <button id="submit-review-btn" type="submit" class="btn btn-dark">Submit</button>
+      </form>
+    </section>
+  </main>
+</body>
+<script src="gamePage.js"></script>
+</html>
