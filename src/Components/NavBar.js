@@ -10,13 +10,10 @@ export function NavBar() {
       </div>
       <div className="menu lowbar navbar">
         <nav>
-          <div className="hamburger-menu">
-            <a href="#"><i className="fa fa-bars" aria-label="menu"></i></a>
-          </div>
           <div className="navbar-links">
             <a href="index.html">Games</a>
-            <a href="https://store.steampowered.com/" target="_blank">Steam</a>
-            <a href="https://github.com/mulhod/steam_reviews" target="_blank">Source</a>
+            <a href="https://store.steampowered.com/" target="_blank" rel="noreferrer">Steam</a>
+            <a href="https://github.com/mulhod/steam_reviews" target="_blank" rel="noreferrer">Source</a>
           </div>
         </nav>
       </div>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useParams } from 'react-router'
 import { NavBar } from "./NavBar.js";
 import { GameDescription } from "./GameDescription.js";
 import { Buttons } from "./Buttons"
@@ -7,7 +8,7 @@ import { Graph } from "./Graph.js";
 import { ReviewForm } from "./ReviewForm.js";
 
 const descriptions = "./data/descriptions.json";
-const getReviewPath = (game) => "./data/" + game + ".json";
+const getReviewPath = (game) => "../data/" + game + ".json";
 const imagesPath = "./data/graphs/";
 const images = {
   "civ5": "Sid Meiers Civilization 5.png",
@@ -24,6 +25,8 @@ export function GamePage(props) {
   const [description, setDescription] = useState("");
   const [reviews, setReviews] = useState([]);
   const [showGraph, setShowGraph] = useState(true);
+  let gameName = useParams().gameName;
+  console.log(gameName);
 
   if (!title) {
     fetch(descriptions)
@@ -53,7 +56,7 @@ export function GamePage(props) {
 
   return (
     <div>
-      <NavBar />
+      <NavBar/>
       <section>
         <GameDescription title={title} description={description} />
       </section>
