@@ -11,7 +11,7 @@ export function NavBar() {
       <div className="menu lowbar navbar">
         <nav>
           <div className="navbar-links">
-            <a href="index.html">Games</a>
+            <a href="/">Games</a>
             <a href="https://store.steampowered.com/" target="_blank" rel="noreferrer">Steam</a>
             <a href="https://github.com/mulhod/steam_reviews" target="_blank" rel="noreferrer">Source</a>
           </div>

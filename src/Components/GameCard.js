@@ -6,7 +6,7 @@ export function GameCard(props) {
   let gameImg = game.img;
 
   return (
-      <div className="gameCard">
+      <div className="gameCard" onClick={() => props.handleSetGame(game.name)}>
         <div>
           <h2>{gameTitle}</h2>
           <img src={gameImg} alt={gameTitle + ' Image'}/>
