@@ -44,7 +44,16 @@ function App() {
       <Route exact path='/'>
         <div>
           <NavBar/>
-          <h1>Top Trending Games</h1>
+          <div class="search-container">
+            <form method="GET">
+              <label for="game_search">Game Search</label>
+              <input type="text" name="game" id="game_search"/>
+              <button type="submit" id="gameSearchSubmitButton">
+                <i class="fas fa-search" aria-label="Search Game"></i>
+              </button>
+            </form>
+          </div>
+          <h1 className='trendingTitle'>Top Trending Games</h1>
           <div className='game-container'>
             { gameCards }
           </div>
