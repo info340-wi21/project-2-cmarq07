@@ -44,12 +44,12 @@ function App() {
       <Route exact path='/'>
         <div>
           <NavBar/>
-          <div class="search-container">
+          <div className="search-container">
             <form method="GET">
-              <label for="game_search">Game Search</label>
+              <label htmlFor="game_search">Game Search</label>
               <input type="text" name="game" id="game_search"/>
               <button type="submit" id="gameSearchSubmitButton">
-                <i class="fas fa-search" aria-label="Search Game"></i>
+                <i className="fas fa-search" aria-label="Search Game"></i>
               </button>
             </form>
           </div>

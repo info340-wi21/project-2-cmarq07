@@ -1,42 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 
 export function ReviewForm(props) {
-  const handleAddReview = () => {
-    let submitReviewForm = document.querySelector("form");
-    let user = submitReviewForm.username.value;
-    let recommendation = submitReviewForm["review-recommendation"].value;
-    let review = submitReviewForm.review.value;
-    let newReview = {"user": user, "recommendation": recommendation, "review": review};
-    props.addReview(newReview);
+  const [username, setUsername] = useState("");
+  const [recommendation, setRecommendation] = useState("Recommended");
+  const [reviewText, setReviewText] = useState("");
+
+  const handleAddReview = (event) => {
+    event.preventDefault();
+    console.log("submitting");
+    props.addReview(
+      {
+        "user": username,
+        "recommendation": recommendation,
+        "review": reviewText
+      }
+    );
+    setUsername("");
+    setRecommendation("Recommended");
+    setReviewText("");
+    event.target.reset();
+  }
+
+  const handleUsernameChange = (event) => {
+    setUsername(event.target.value);
+  }
+
+  const handleRecommendationChange = (event) => {
+    setRecommendation(event.target.value);
+  }
+
+  const handleReviewTextChange = (event) => {
+    setReviewText(event.target.value);
   }
 
   return (
     <section>
       <h2>Submit a Review</h2>
-      <form onSubmit={() => handleAddReview()}>
+      <form onSubmit={(event) => handleAddReview(event)}>
         <div className="form-group">
-          <label for="review-username">Username: </label>
+          <label htmlFor="review-username">Username: </label>
           <input className="form-control" name="username" id="review-username" type="text"
-            required />
+            required onChange={handleUsernameChange}/>
         </div>
         <div className="form-check">
           <input className="form-check-input" type="radio" name="review-recommendation"
-            id="review-recommended" value="Recommended" checked/>
-          <label className="form-check-label mr-5" for="review-recommended">
+            id="review-recommended" value="Recommended" defaultChecked onChange={handleRecommendationChange}/>
+          <label className="form-check-label mr-5" htmlFor="review-recommended">
             Recommended
           </label>
           <input className="form-check-input" type="radio" name="review-recommendation"
-            id="review-not-recommended" value="Not Recommended"/>
-          <label className="form-check-label" for="review-not-recommended">
+            id="review-not-recommended" value="Not Recommended" onChange={handleRecommendationChange}/>
+          <label className="form-check-label" htmlFor="review-not-recommended">
             Not Recommended
           </label>
-          <div className="form-group">
-          <label for="review_text">Review: </label>
+        </div>
+        <div className="form-group">
+          <label htmlFor="review_text">Review: </label>
           <textarea className="form-control" name="review" id="review_text" rows="5"
-            required></textarea>
+            required onChange={handleReviewTextChange}></textarea>
         </div>
-          <button id="submit-review-btn" type="submit" className="btn btn-dark">Submit</button>
-        </div>
+        <button id="submit-review-btn" type="submit" className="btn btn-dark">Submit</button>
       </form>
     </section>
   );

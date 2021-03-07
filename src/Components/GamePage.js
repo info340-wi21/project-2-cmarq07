@@ -20,21 +20,17 @@ const images = {
   "gmod": "Garrys Mod.png"
 };
 
-let bool = true;
-
 export function GamePage(props) {
-  console.log(props.game);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [reviews, setReviews] = useState([]);
   const [showGraph, setShowGraph] = useState(false);
   let gameName = useParams().gameName;
-  console.log(gameName);
 
-  if (!title && bool) {
+  if (!title) {
     fetch(descriptions)
       .then(resp => resp.json())
-      .then(descriptions => descriptions[props.game])
+      .then(descriptions => descriptions[gameName])
       .then(game => {
         setTitle(game.title);
         setDescription(game.description);
@@ -42,14 +38,11 @@ export function GamePage(props) {
     .catch(error => {console.log(error)});
   }
 
-  if (!description && bool) {
-    console.log("FETCHING REVIEWS");
-    fetch(getReviewPath(props.game))
+  if (!description) {
+    fetch(getReviewPath(gameName))
       .then(resp => resp.json())
       .then(reviews => {setReviews(reviews)})
     .catch(error => {console.log(error)});
-    bool = false;
-    console.log(reviews);
   }
 
   const handleSetShowGraph = (bool) => {
@@ -57,7 +50,9 @@ export function GamePage(props) {
   }
 
   const addReview = (review) => {
-    setReviews(reviews.push(review));
+    reviews.push(review);
+    let copy = [...reviews];
+    setReviews(copy);
   }
 
   return (
@@ -72,7 +67,7 @@ export function GamePage(props) {
       </section>
       {reviews.map(review =>
         <Review key={review.user} user={review.user} recommendation={review.recommendation} review={review.review} showGraph={showGraph}/>)}
-      <Graph showGraph={showGraph} imgLink={imagesPath + images[props.game]} game={props.game}/>
+      <Graph showGraph={showGraph} imgLink={imagesPath + images[gameName]} game={gameName}/>
       <ReviewForm addReview={addReview}/>
     </div>
   );
