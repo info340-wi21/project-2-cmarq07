@@ -6,6 +6,8 @@ import { Buttons } from "./Buttons"
 import { Review } from "./Review.js";
 import { Graph } from "./Graph.js";
 import { ReviewForm } from "./ReviewForm.js";
+import firebase from "firebase";
+import "firebase/database";
 
 const descriptions = "../data/descriptions.json";
 const getReviewPath = (game) => "../data/" + game + ".json";
@@ -38,11 +40,37 @@ export function GamePage(props) {
     .catch(error => {console.log(error)});
   }
 
+  // Use this to add reviews to firebase, otherwise leave commented
+  // if (!description) {
+  //   const ref = firebase.database().ref(gameName);
+  //   fetch(getReviewPath(gameName))
+  //     .then(resp => resp.json())
+  //     .then(reviews => {
+  //       setReviews(reviews)
+  //       for (let review of reviews) {
+  //         console.log(review);
+  //         ref.push(review);
+  //       }
+  //     })
+  //   .catch(error => {console.log(error)});
+  // }
+
+  const setReviewsFromFirebase = (gameName) => {
+    firebase.database().ref(gameName).get()
+      .then(reviewsObj => reviewsObj.val())
+      .then(reviewsObj => {
+        const allKeys = Object.keys(reviewsObj);
+        const reviewsArray = allKeys.map(key => {
+          const singleReview = {...reviewsObj[key]};
+          singleReview.key = key;
+          return singleReview;
+        });
+        setReviews(reviewsArray);
+      });
+  }
+
   if (!description) {
-    fetch(getReviewPath(gameName))
-      .then(resp => resp.json())
-      .then(reviews => {setReviews(reviews)})
-    .catch(error => {console.log(error)});
+    setReviewsFromFirebase(gameName);
   }
 
   const handleSetShowGraph = (bool) => {
@@ -50,9 +78,9 @@ export function GamePage(props) {
   }
 
   const addReview = (review) => {
-    reviews.push(review);
-    let copy = [...reviews];
-    setReviews(copy);
+    const reviewsRef = firebase.database().ref(gameName);
+    reviewsRef.push(review);
+    setReviewsFromFirebase(gameName);
   }
 
   return (
