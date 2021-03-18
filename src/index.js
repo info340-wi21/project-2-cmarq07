@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
+import { Helmet } from 'react-helmet'
 import firebase from "firebase";
 import "firebase/database";
 
@@ -23,6 +24,9 @@ firebase.analytics();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
+      <Helmet>
+            <title>Video Game Reviews</title>
+      </Helmet>
       <App/>
     </BrowserRouter>
   </React.StrictMode>,

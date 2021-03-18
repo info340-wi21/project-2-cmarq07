@@ -67,6 +67,10 @@ header .menu.lowbar {
   color: black;
 }
 
+.gameCard a:hover {
+  text-decoration:none;
+}
+
 .menu.topbar a {
   text-decoration: none;
 }
@@ -165,6 +169,7 @@ section {
 
 .gameCard:hover {
   background-color: white;
+  text-decoration:none;
   cursor: pointer;
 }
 

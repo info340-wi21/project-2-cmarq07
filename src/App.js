@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
-import { Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route, Link, Redirect, useHistory } from 'react-router-dom'
+import { Helmet } from 'react-helmet';
 import { GameCard } from "./Components/GameCard.js";
 import { GamePage } from "./Components/GamePage.js";
 import { NavBar } from "./Components/NavBar.js";
@@ -24,6 +25,14 @@ function App() {
     {title:"Skyrim", name:"skyrim", img:skyrimImage},
     {title:"Garry's Mod", name:"gmod", img:gmodImage}
   ];
+  const meta = {
+    title: 'Video Game Reviews',
+    description: 'View reviews of popular video games',
+    author: 'Brandon Ta, Christian Calloway, Mequanent Shiferaw',
+    meta: {
+        charset: 'utf-8'
+    }
+}
 
   const handleSetGame = (game) => {
     console.log("setting state to: " + game);

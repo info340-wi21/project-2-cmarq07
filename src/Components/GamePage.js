@@ -7,6 +7,7 @@ import { Review } from "./Review.js";
 import { Graph } from "./Graph.js";
 import { ReviewForm } from "./ReviewForm.js";
 import firebase from "firebase";
+import { Helmet } from 'react-helmet';
 import "firebase/database";
 
 const descriptions = "../data/descriptions.json";
@@ -85,6 +86,9 @@ export function GamePage(props) {
 
   return (
     <div>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <NavBar/>
       <section>
         <GameDescription title={title} description={description} />
